@@ -450,12 +450,42 @@
             <div class="card">
                 <h2>Đường cong quên lãng (The Forgetting Curve)</h2>
                 <p>Khám phá bởi Hermann Ebbinghaus, đường cong này cho thấy tốc độ chúng ta mất thông tin nếu không có sự can thiệp.</p>
-                <ul style="background: #fff7ed; padding: 20px; border-radius: 16px; border: 1px solid #ffedd5;">
-                    <li><strong>Sau 20 phút:</strong> Có thể quên khoảng 40%</li>
-                    <li><strong>Sau 1 giờ:</strong> Quên hơn 50%</li>
-                    <li><strong>Sau 24 giờ:</strong> Chỉ còn nhớ khoảng 30–40%</li>
-                </ul>
-                <p>Việc ôn tập thông tin đúng thời điểm giúp làm chậm quá trình quên lãng. Đây là lý do chúng ta cần áp dụng <strong>Spaced Repetition (Lặp lại giãn cách)</strong>.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; margin-top: 20px;">
+                    <div>
+                        <ul style="background: #fff7ed; padding: 20px; border-radius: 16px; border: 1px solid #ffedd5; margin-bottom: 0;">
+                            <li><strong>Sau 20 phút:</strong> Có thể quên khoảng 40%</li>
+                            <li><strong>Sau 1 giờ:</strong> Quên hơn 50%</li>
+                            <li><strong>Sau 24 giờ:</strong> Chỉ còn nhớ khoảng 30–40%</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 20px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);">
+                        <svg viewBox="0 0 400 200" style="width: 100%; height: auto; display: block;">
+                            <!-- Grid lines -->
+                            <line x1="40" y1="10" x2="40" y2="170" stroke="#e2e8f0" stroke-width="1" />
+                            <line x1="40" y1="170" x2="380" y2="170" stroke="#e2e8f0" stroke-width="1" />
+                            
+                            <!-- Labels -->
+                            <text x="30" y="20" font-size="10" fill="#94a3b8" text-anchor="end">100%</text>
+                            <text x="30" y="90" font-size="10" fill="#94a3b8" text-anchor="end">50%</text>
+                            <text x="30" y="170" font-size="10" fill="#94a3b8" text-anchor="end">0%</text>
+                            
+                            <text x="40" y="185" font-size="10" fill="#94a3b8" text-anchor="middle">Ngày 0</text>
+                            <text x="210" y="185" font-size="10" fill="#94a3b8" text-anchor="middle">Ngày 3</text>
+                            <text x="380" y="185" font-size="10" fill="#94a3b8" text-anchor="middle">Ngày 7</text>
+                            
+                            <!-- Curve -->
+                            <path d="M 40 10 Q 60 120, 380 150" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" />
+                            
+                            <!-- Points -->
+                            <circle cx="40" cy="10" r="4" fill="var(--primary)" />
+                            <circle cx="380" cy="150" r="4" fill="var(--primary)" />
+                        </svg>
+                        <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 10px; margin-bottom: 0;">Biểu đồ đường cong quên lãng</p>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 24px;">Việc ôn tập thông tin đúng thời điểm giúp làm chậm quá trình quên lãng. Đây là lý do chúng ta cần áp dụng <strong>Spaced Repetition (Lặp lại giãn cách)</strong>.</p>
             </div>
         </section>
 
