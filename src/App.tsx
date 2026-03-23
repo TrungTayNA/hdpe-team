@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
+  LineChart, 
+  Line, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  AreaChart,
+  Area
+} from 'recharts';
+import { 
   BookOpen, 
   Calendar, 
   Video, 
@@ -111,7 +122,7 @@ export default function App() {
         </AnimatePresence>
       </nav>
 
-      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full bg-white">
         <AnimatePresence mode="wait">
           {activeTab === 'intro' && (
             <motion.section
@@ -519,8 +530,59 @@ export default function App() {
                               </div>
                               <p className="text-slate-600 text-sm italic">Việc ôn tập thông tin đúng thời điểm giúp làm chậm quá trình quên lãng. Đây là lý do chúng ta cần áp dụng Spaced Repetition.</p>
                             </div>
-                            <div className="aspect-square bg-slate-100 rounded-2xl flex items-center justify-center">
-                              <span className="text-slate-400 text-sm">[Biểu đồ đường cong quên lãng]</span>
+                            <div className="h-[300px] bg-white rounded-2xl p-4 border border-slate-100 shadow-inner">
+                              <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart
+                                  data={[
+                                    { day: 0, retention: 100 },
+                                    { day: 0.5, retention: 60 },
+                                    { day: 1, retention: 33 },
+                                    { day: 2, retention: 25 },
+                                    { day: 3, retention: 20 },
+                                    { day: 4, retention: 17 },
+                                    { day: 5, retention: 15 },
+                                    { day: 6, retention: 13 },
+                                    { day: 7, retention: 12 }
+                                  ]}
+                                  margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                                >
+                                  <defs>
+                                    <linearGradient id="colorRetention" x1="0" y1="0" x2="0" y2="1">
+                                      <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.1}/>
+                                      <stop offset="95%" stopColor="#4f46e5" stopOpacity={0}/>
+                                    </linearGradient>
+                                  </defs>
+                                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                                  <XAxis 
+                                    dataKey="day" 
+                                    axisLine={false} 
+                                    tickLine={false} 
+                                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                                    label={{ value: 'Ngày', position: 'insideBottom', offset: -5, fontSize: 10, fill: '#94a3b8' }}
+                                  />
+                                  <YAxis 
+                                    axisLine={false} 
+                                    tickLine={false} 
+                                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                                    domain={[0, 100]}
+                                    label={{ value: '% Ghi nhớ', angle: -90, position: 'insideLeft', offset: 10, fontSize: 10, fill: '#94a3b8' }}
+                                  />
+                                  <Tooltip 
+                                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+                                    formatter={(value: number) => [`${value}%`, 'Ghi nhớ']}
+                                    labelFormatter={(label) => `Ngày ${label}`}
+                                  />
+                                  <Area 
+                                    type="monotone" 
+                                    dataKey="retention" 
+                                    stroke="#4f46e5" 
+                                    strokeWidth={3}
+                                    fillOpacity={1} 
+                                    fill="url(#colorRetention)" 
+                                    animationDuration={2000}
+                                  />
+                                </AreaChart>
+                              </ResponsiveContainer>
                             </div>
                           </div>
                         </div>
